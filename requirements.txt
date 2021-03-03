@@ -1,0 +1,5 @@
+autopep8==1.5.5
+keyboard==0.13.5
+pycodestyle==2.6.0
+pydub==0.24.1
+toml==0.10.2
