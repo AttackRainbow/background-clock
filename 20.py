@@ -50,19 +50,22 @@ def main():
     main_loop(minutes, audio)
 
 
-def main_loop(minutes, audio=None):
+def main_loop(minutes,  audio=None):
     freq = 380
     play_dur_milisec = 2000
 
+    audio_to_play = None
     if audio:  # to let user know that it has started
-        play(audio[:play_dur_milisec])
+        fade_out_milisec = 500
+        audio_to_play = audio[:play_dur_milisec].fade_out(fade_out_milisec)
+        play(audio_to_play)
 
     start = time()
     while True:
         elapsed = time() - start
         if elapsed >= minutes * 60:
-            if audio:
-                play(audio[:play_dur_milisec])
+            if audio_to_play:
+                play(audio_to_play)
             else:
                 Beep(freq, play_dur_milisec)
             start = time()
