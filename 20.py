@@ -47,10 +47,10 @@ def main():
                     f"dB in {adjust_dB_file} cannot be converted to floating point number.")
         audio += dB
 
-    main_loop(audio)
+    main_loop(minutes, audio)
 
 
-def main_loop(audio=None):
+def main_loop(minutes, audio=None):
     freq = 380
     play_dur_milisec = 2000
 
@@ -59,8 +59,8 @@ def main_loop(audio=None):
 
     start = time()
     while True:
-        elapse = time() - start
-        if elapse >= 1:
+        elapsed = time() - start
+        if elapsed >= minutes * 60:
             if audio:
                 play(audio[:play_dur_milisec])
             else:
