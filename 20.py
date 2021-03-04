@@ -14,7 +14,7 @@ for i in range(5):
         if i == LIMIT:
             print("Cannot install dependency...")
             exit(1)
-        os.system(sys.executable + " pip install -r requirements.txt")
+        os.system(sys.executable + " -m pip install -r requirements.txt")
     else:
         break
 
